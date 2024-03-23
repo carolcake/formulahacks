@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DIY FORMULA/Menu</title>
+    <script>
+function showRacer(racerType) {
+    const racers = document.querySelectorAll(".racers");
+    racers.forEach(racer => {
+        if (racer.id === "racers" + racerType.slice(-1)) {
+            racer.style.display = "block";
+        } else {
+            racer.style.display = "none";
+        }
+    });
+}
+
+function showTire(tireType) {
+    const tires1 = document.getElementById("tires1");
+    const tires2 = document.getElementById("tires2");
+    const tires3 = document.getElementById("tires3");
+    const tires4 = document.getElementById("tires4");
+    const tires5 = document.getElementById("tires5");
+    const tires6 = document.getElementById("tires6");
+    const tires7 = document.getElementById("tires7");
+    const tires8 = document.getElementById("tires8");
+    const tires9 = document.getElementById("tires9");
+    const tires10 = document.getElementById("tires10");
+
+    tires1.style.display = tireType === "tire1" ? "block" : "none";
+    tires2.style.display = tireType === "tire2" ? "block" : "none";
+    tires3.style.display = tireType === "tire3" ? "block" : "none";
+    tires4.style.display = tireType === "tire4" ? "block" : "none";
+    tires5.style.display = tireType === "tire5" ? "block" : "none";
+    tires6.style.display = tireType === "tire6" ? "block" : "none";
+    tires7.style.display = tireType === "tire7" ? "block" : "none";
+    tires8.style.display = tireType === "tire8" ? "block" : "none";
+    tires9.style.display = tireType === "tire9" ? "block" : "none";
+    tires10.style.display = tireType === "tire10" ? "block" : "none";
+    tires1.style.opacity = "0.5";
+    tires2.style.opacity = "0.5";
+    tires3.style.opacity = "0.5";
+    tires4.style.opacity = "0.5";
+    tires5.style.opacity = "0.5";
+    tires6.style.opacity = "0.5";
+    tires7.style.opacity = "0.5";
+    tires8.style.opacity = "0.5";
+    tires9.style.opacity = "0.5";
+    tires10.style.opacity = "0.5";
+}
+
+function showShade(shadeType) {
+    const shades = document.querySelectorAll(".shades");
+    shades.forEach(shade => {
+        if (shade.id === "shades" + shadeType.slice(-1)) {
+            shade.style.display = "block";
+        } else {
+            shade.style.display = "none";
+        }
+    });
+}
+
+        function showImage1() {
+clearImages();
+const img = document.getElementById("myImage1");
+img.style.opacity = "0.5";
+img.style.display = "block";
+        }
+
+        function showImage2() {
+clearImages();
+const img = document.getElementById("myImage2");
+img.style.opacity = "0.5";
+img.style.display = "block";
+        }
+
+function showImage3() {
+    clearImages();
+    const img = document.getElementById("myImage3");
+    img.style.opacity = "0.5";
+    img.style.display = "block";
+}
+
+function showImage4() {
+    clearImages();
+    const img = document.getElementById("myImage4");
+    img.style.opacity = "0.5";
+    img.style.display = "block";
+}
+
+function showImage5() {
+    clearImages();
+    const img = document.getElementById("myImage5");
+    img.style.opacity = "0.5";
+    img.style.display = "block";
+}
+
+function showImage6() {
+    clearImages();
+    const img = document.getElementById("myImage6");
+    img.style.opacity = "0.5";
+    img.style.display = "block";
+}
+
+function showImage7() {
+    clearImages();
+    const img = document.getElementById("myImage7");
+    img.style.opacity = "0.5";
+    img.style.display = "block";
+}
+
+function showImage8() {
+    clearImages();
+    const img = document.getElementById("myImage8");
+    img.style.opacity = "0.5";
+    img.style.display = "block";
+}
+
+function showImage9() {
+    clearImages();
+    const img = document.getElementById("myImage9");
+    img.style.opacity = "0.5";
+    img.style.display = "block";
+}
+
+function showImage10() {
+    clearImages();
+    const img = document.getElementById("myImage10");
+    img.style.opacity = "0.5";
+    img.style.display = "block";
+}
+
+function clearImages() {
+const img1 = document.getElementById("myImage1");
+img1.style.display = "none";
+const img2 = document.getElementById("myImage2");
+img2.style.display = "none";
+const img3 = document.getElementById("myImage3");
+img3.style.display = "none";
+const img4 = document.getElementById("myImage4");
+img4.style.display = "none";
+const img5 = document.getElementById("myImage5");
+img5.style.display = "none";
+const img6 = document.getElementById("myImage6");
+img6.style.display = "none";
+const img7 = document.getElementById("myImage7");
+img7.style.display = "none";
+const img8 = document.getElementById("myImage8");
+img8.style.display = "none";
+const img9 = document.getElementById("myImage9");
+img9.style.display = "none";
+const img10 = document.getElementById("myImage10");
+img10.style.display = "none";
+}
+    </script>
+</head>
+<body>
+<style>
+* {
+    font-size: 1em ;
+    font-family: 'MyCustomFont', sans-serif !important;
+}
+
+button:hover {
+   background-color: rgba(200, 0, 0, 0.2);
+}
+
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('Formula1-Bold_web_0.ttf');
+}
+
+    body {
+        background-image: url('background3.png');
+   	background-repeat:no-repeat;
+   	background-size:cover;
+    }
+
+    button{
+        border: none;
+        cursor: pointer;
+        appearance: none;
+        background-color: inherit;
+         transition: transform .7s ease-in-out;
+      }
+
+    .template{position: absolute; top: 120px; left: 600px;}
+    .body1{position: absolute; top: 130px; left: 30px;}
+    .tires1{position: absolute; top: 150px; left: 220px;}
+    .shades1{position: absolute; top: 170px; left: 420px;}
+    .racers1{position: absolute; top: 420px; left: 120px;}    
+    .button1{position: absolute; top: 570px; left: 400px;} 
+    .button2{position: absolute; top: 570px; left: 1100px;}
+
+.image1 {
+  z-index: 1;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.coverimage {
+  z-index: 3;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.tires {
+  z-index: 4;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.shades {
+  z-index: 2;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.racers {
+  z-index: 5;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+</style>
+
+<div class = "racers1">
+<p style="font-size:25px">&ensp;Pick Your Racer</p>
+<input type="radio" id="racer10" name="racer" value="racer9" onclick="showRacer('racer10')">
+<label for="racer10">No Racer</label><br>
+<input type="radio" id="racer1" name="racer" value="racer1" onclick="showRacer('racer1')">
+<label for="racer1">Charles Leclerc</label><br>
+<input type="radio" id="racer2" name="racer" value="racer2" onclick="showRacer('racer2')">
+<label for="racer2">Max Verstappen</label><br>
+<input type="radio" id="racer3" name="racer" value="racer3" onclick="showRacer('racer3')">
+<label for="racer3">Mario</label><br>
+<input type="radio" id="racer4" name="racer" value="racer4" onclick="showRacer('racer4')">
+<label for="racer4">Baby Yoda</label><br>
+<input type="radio" id="racer6" name="racer" value="racer6" onclick="showRacer('racer6')">
+<label for="racer6">Winnie-the-Pooh</label><br>
+<input type="radio" id="racer7" name="racer" value="racer7" onclick="showRacer('racer7')">
+<label for="racer7">Joe Biden</label><br>
+<input type="radio" id="racer8" name="racer" value="racer8" onclick="showRacer('racer8')">
+<label for="racer8">Donald Trump</label><br>
+<input type="radio" id="racer5" name="racer" value="racer5" onclick="showRacer('racer5')">
+<label for="racer5">Soviet Bear</label><br>
+<input type="radio" id="racer9" name="racer" value="racer9" onclick="showRacer('racer9')">
+<label for="racer9">Eagle Sam</label><br>
+</div>
+
+<div class = "shades1">
+<p style="font-size:25px">&ensp;Car Vibe</p>
+<input type="radio" id="shade1" name="shade" value="shade1" onclick="showShade('shade1')">
+<label for="shade1">Good Ol' Days</label><br>
+<input type="radio" id="shade2" name="shade" value="shade2" onclick="showShade('shade2')">
+<label for="shade2">Golden Age</label><br>
+<input type="radio" id="shade3" name="shade" value="shade3" onclick="showShade('shade3')">
+<label for="shade3">Mysterious Valey</label><br>
+<input type="radio" id="shade4" name="shade" value="shade4" onclick="showShade('shade4')">
+<label for="shade4">Rowing Trees</label><br>
+<input type="radio" id="shade5" name="shade" value="shade5" onclick="showShade('shade5')">
+<label for="shade5">Lighten Sky</label><br>
+<input type="radio" id="shade6" name="shade" value="shade6" onclick="showShade('shade6')">
+<label for="shade6">Bloody Beast</label><br>
+<input type="radio" id="shade7" name="shade" value="shade7" onclick="showShade('shade7')">
+<label for="shade7">Barbie</label><br>
+<input type="radio" id="shade8" name="shade" value="shade8" onclick="showShade('shade8')">
+<label for="shade8">Dead Car Walking</label><br>
+<input type="radio" id="shade9" name="shade" value="shade9" onclick="showShade('shade9')">
+<label for="shade9">Silver Line</label><br>
+<input type="radio" id="shade0" name="shade" value="shade0" onclick="showShade('shade0')">
+<label for="shade10">A New Spring</label><br>
+</div>
+
+<div class = "tires1">
+<p style="font-size:25px">&ensp;Car Tires</p>
+<input type="radio" id="tire1" name="tire" value="tire1" onclick="showTire('tire1')">
+<label for="tire1">Spilled Honey</label><br>
+<input type="radio" id="tire2" name="tire" value="tire2" onclick="showTire('tire2')">
+<label for="tire2">Slava Ukraini</label><br>
+<input type="radio" id="tire3" name="tire" value="tire3" onclick="showTire('tire3')">
+<label for="tire3">Rio De Janeiro</label><br>
+<input type="radio" id="tire4" name="tire" value="tire4" onclick="showTire('tire4')">
+<label for="tire4">Choco Bars</label><br>
+<input type="radio" id="tire5" name="tire" value="tire5" onclick="showTire('tire5')">
+<label for="tire5">Milky Way</label><br>
+<input type="radio" id="tire6" name="tire" value="tire6" onclick="showTire('tire6')">
+<label for="tire6">Lollipop</label><br>
+<input type="radio" id="tire7" name="tire" value="tire7" onclick="showTire('tire7')">
+<label for="tire7">Blue Demon</label><br>
+<input type="radio" id="tire8" name="tire" value="tire8" onclick="showTire('tire8')">
+<label for="tire8">Classics</label><br>
+<input type="radio" id="tire9" name="tire" value="tire9" onclick="showTire('tire9')">
+<label for="tire9">You see Fire</label><br>
+<input type="radio" id="tire10" name="tire" value="tire10" onclick="showTire('tire10')">
+<label for="tire10">Lakers</label><br>
+</div>
+
+<div class = "body1">
+<p style="font-size:25px">&ensp;Car Body</p>
+<input type="radio" id="html" name="body_color" value="dblue" onclick="showImage1()">
+<label for="dblue">Dark Blue</label><br>
+<input type="radio" id="html" name="body_color" value="dgreen" onclick="showImage2()">
+<label for="dgreen">Dark Green</label><br>
+<input type="radio" id="html" name="body_color" value="dred" onclick="showImage3()">
+<label for="dred">Dark Red</label><br>
+<input type="radio" id="html" name="body_color" value="gold" onclick="showImage4()">
+<label for="gold">Gold</label><br>
+<input type="radio" id="html" name="body_color" value="lblue" onclick="showImage5()">
+<label for="lblue">Light Blue</label><br>
+<input type="radio" id="html" name="body_color" value="lgreen" onclick="showImage6()">
+<label for="lgreen">Light Green</label><br>
+<input type="radio" id="html" name="body_color" value="lred" onclick="showImage7()">
+<label for="lred">Light Red</label><br>
+<input type="radio" id="html" name="body_color" value="pink" onclick="showImage8()">
+<label for="pink">Pink</label><br>
+<input type="radio" id="html" name="body_color" value="silver" onclick="showImage9()">
+<label for="silver">Silver</label><br>
+<input type="radio" id="html" name="body_color" value="yellow" onclick="showImage10()">
+<label for="yellow">Yellow</label><br>
+</div>
+
+<div class = "template">
+<img id="tires1" class="tires" src="images/tires1.png" style="display: none;" width="800" height="500">
+<img id="tires2" class="tires" src="images/tires2.png" style="display: none;" width="800" height="500">
+<img id="tires3" class="tires" src="images/tires3.png" style="display: none;" width="800" height="500">
+<img id="tires4" class="tires" src="images/tires4.png" style="display: none;" width="800" height="500">
+<img id="tires5" class="tires" src="images/tires5.png" style="display: none;" width="800" height="500">
+<img id="tires6" class="tires" src="images/tires6.png" style="display: none;" width="800" height="500">
+<img id="tires7" class="tires" src="images/tires7.png" style="display: none;" width="800" height="500">
+<img id="tires8" class="tires" src="images/tires8.png" style="display: none;" width="800" height="500">
+<img id="tires9" class="tires" src="images/tires9.png" style="display: none;" width="800" height="500">
+
+<img id="racers1" class="racers" src="images/racer1.png" style="display: none;" width="800" height="500">
+<img id="racers2" class="racers" src="images/racer2.png" style="display: none;" width="800" height="500">
+<img id="racers3" class="racers" src="images/racer3.png" style="display: none;" width="800" height="500">
+<img id="racers4" class="racers" src="images/racer4.png" style="display: none;" width="800" height="500">
+<img id="racers5" class="racers" src="images/racer5.png" style="display: none;" width="800" height="500">
+<img id="racers6" class="racers" src="images/racer6.png" style="display: none;" width="800" height="500">
+<img id="racers7" class="racers" src="images/racer7.png" style="display: none;" width="800" height="500">
+<img id="racers8" class="racers" src="images/racer8.png" style="display: none;" width="800" height="500">
+<img id="racers9" class="racers" src="images/racer9.png" style="display: none;" width="800" height="500">
+
+<img id="tires10" class="tires" src="images/tires10.png" style="display: none;" width="800" height="500">
+<img id="shades1" class="shades" src="images/shade1.png" style="display: none;" width="800" height="500">
+<img id="shades2" class="shades" src="images/shade2.png" style="display: none;" width="800" height="500">
+<img id="shades3" class="shades" src="images/shade3.png" style="display: none;" width="800" height="500">
+<img id="shades4" class="shades" src="images/shade4.png" style="display: none;" width="800" height="500">
+<img id="shades5" class="shades" src="images/shade5.png" style="display: none;" width="800" height="500">
+<img id="shades6" class="shades" src="images/shade6.png" style="display: none;" width="800" height="500">
+<img id="shades7" class="shades" src="images/shade7.png" style="display: none;" width="800" height="500">
+<img id="shades8" class="shades" src="images/shade8.png" style="display: none;" width="800" height="500">
+<img id="shades9" class="shades" src="images/shade9.png" style="display: none;" width="800" height="500">
+<img id="shades0" class="shades" src="images/shade0.png" style="display: none;" width="800" height="500">
+
+<img id="myImage1" class="coverimage" src="images/color_dblue.png" style="display: none;" width="800" height="500">
+<img id="myImage2" class="coverimage" src="images/color_dgreen.png" style="display: none;" width="800" height="500">
+<img id="myImage3" class="coverimage" src="images/color_dred.png" style="display: none;" width="800" height="500">
+<img id="myImage4" class="coverimage" src="images/color_gold.png" style="display: none;" width="800" height="500">
+<img id="myImage5" class="coverimage" src="images/color_lblue.png" style="display: none;" width="800" height="500">
+<img id="myImage6" class="coverimage" src="images/color_lgreen.png" style="display: none;" width="800" height="500">
+<img id="myImage7" class="coverimage" src="images/color_lred.png" style="display: none;" width="800" height="500">
+<img id="myImage8" class="coverimage" src="images/color_pink.png" style="display: none;" width="800" height="500">
+<img id="myImage9" class="coverimage" src="images/color_silver.png" style="display: none;" width="800" height="500">
+<img id="myImage10" class="coverimage" src="images/color_yellow.png" style="display: none;" width="800" height="500">
+<img src="images/F1 template.png"  class = "image1" alt="Submit" width = "800" height = "500">
+</div>
+
+<div class = "button1">
+<a href="match_racer/personality_quiz.html">
+  <button>
+<img src="button_match.png">
+  </button>
+</a>
+</div>
+
+<div class = "button2">
+<a href="drivers-analysis.html">
+  <button>
+<img src="button_stats.png">
+  </button>
+</a>
+</div>
+
+<button onclick="showImage()">Click to Show Image</button>
+
+
+</body>
+</html>

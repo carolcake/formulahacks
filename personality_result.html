@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personality Quiz Results</title>
+    <link rel="stylesheet" href="fonts/stylesheet.css">
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <h1>Your Top Matches are:</h1>
+    <h2 id="result"></h2>
+    <script>
+        // Get the MBTI result from the URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const personalityType = urlParams.get('result');
+        window.personalityType = new URLSearchParams(window.location.search).get('result');
+        window.nationality = new URLSearchParams(window.location.search).get('nationality');
+        window.year = new URLSearchParams(window.location.search).get('year');
+
+        // Display the result
+        document.getElementById('result').textContent = `${personalityType}`;
+        
+    </script>
+    <div id="resultContainer"></div> <!-- Not displaying -->
+    <script type="module" src="personality_result.js"></script>
+
+</body>
+</html>

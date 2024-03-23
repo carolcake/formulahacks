@@ -1,0 +1,34 @@
+<!-- 
+  To view this page correctly, 
+  please run it on a local server 
+  (e.g., Python's HTTP server) 
+  instead of opening it directly from the file system.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personality Quiz</title>
+    <link rel="stylesheet" href="fonts/stylesheet.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Match Your Racer</h1>
+    <form id="quizForm">
+        <div id="quizQuestions"></div>
+        <div id="optionalQuestions">
+            <p><label for="nation">What is your Nationality (Please do not abbreviate):</label></p>
+            <input type="text" id="nation" pattern="^(?=\s*\S)([a-zA-Z]+\s*){4,}$" title="Please do not use abbreviations"><br><br>
+
+            <p><label for="year">Choose a year or season:</label></p>
+            <input type="text" id="year" name="year" pattern="[0-9]{4}" title="Please enter a year ex: 2024"><br><br>
+        </div>
+        <button id="submitBtn"type="submit">Submit</button>
+    </form>
+
+    <script src="personality_quiz.js"></script>
+</body>
+</html>
