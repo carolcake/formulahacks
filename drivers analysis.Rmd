@@ -1,5 +1,5 @@
 ---
-title: "Formula 1 Drivers Analysis"
+title: "Formula 1 Drivers Analysis (1950-2023)"
 author: ""
 date: "2024-03-23"
 output: html_document
@@ -50,6 +50,7 @@ ggplot(df_top_10, aes(x = reorder(Driver, -Race_Starts), y = Race_Starts, fill =
   # coord_flip()
 
 ```
+
 From the bar plot above, the top ten race starters are (in order): Fernando Alonso(356), Kimi Räikkönen(349), Rubens Barrichello(322), Lewis Hamilton(311), Jenson Button(306), Michael Schumacher(306), Sebastian Vettel(299), Felipe Massa(269), Riccardo Patrese(256), Jarno Truill(252). 
 
 ### 3. Top 10 Drivers by Pole Positions
@@ -78,6 +79,7 @@ ggplot(df_top_10, aes(x = reorder(Driver, -Pole_Positions), y = Pole_Positions, 
 
 
 ```
+
 From the bar plot above, the top ten drivers by pole positions are (in order): Lewis Hamilton(103), Michael Schumacher(68), Ayrton Senna(65), Sebastian Vettel(57), Alain Prost(33), Jim Clark(33), Nigel Mansell(32), Nico Rosberg(30), Juan Manuel Fangio(29), Mika Häkkinen(26).
 
 
@@ -96,6 +98,7 @@ df_top_10 <- head(df_race_starters, 10)
 # Create a bar plot using ggplot2
 ggplot(df_top_10, aes(x = reorder(Driver, -Race_Wins), y = Race_Wins, fill = Driver)) +
   geom_bar(stat = "identity", color = "black") +
+  geom_text(aes(label = Race_Wins), vjust = -0.5, size = 3, color = "black") +
   labs(title = "Top 10 Drivers by Race Wins", x = "Driver", y = "Race Wins") +
   theme_classic() +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) + 
@@ -103,7 +106,7 @@ ggplot(df_top_10, aes(x = reorder(Driver, -Race_Wins), y = Race_Wins, fill = Dri
 
 
 ```
-
+From the bar plot above, the top ten drivers by number of wins are (in order): Lewis Hamilton(103), Michael Schumacher(91), Sebastian Vettel(53), Alain Prost(51), Ayrton Senna(41), Max Verstappen(36), Fernando Alonso(32), Nigel Mansell(31), Jackie Stewart(27), Jim Clark(25).
 
 ### 5: Racers' Nationalities: 
 
@@ -247,6 +250,5 @@ p
 ```
 
 From above plot we can see the trend of drivers from US, UK, France, Italy overall decreased over the decades; drivers from Germany and Brazil slightly increased.
-
 
 
