@@ -1,0 +1,252 @@
+---
+title: "Formula 1 Drivers Analysis"
+author: ""
+date: "2024-03-23"
+output: html_document
+---
+
+Github link (code attached): https://github.com/Cindy-f/Formula-data-analysis.git
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(patchwork)
+library(ggplot2)
+library(dplyr)
+library(tidyverse)
+library(mosaic)
+library(kableExtra)
+library(plotly)
+library(ggpubr)
+drivers <- read.csv('all-drivers.csv')
+
+
+```
+
+
+### 1. Introduction: Our dataset contains 868 Formula 1 drivers from year 1950 to 2023, which contains information about drivers' names, nationalities, seasons, number of championships, race entries, etc. We are trying to visualize the overall data distribution and make some conclusions, to find some common patterns between those racers and to predict future winners. Click on the following link to view the dataset: [https://www.kaggle.com/datasets/dubradave/formula-1-drivers-dataset/data](https://www.kaggle.com/datasets/dubradave/formula-1-drivers-dataset/data)
+
+
+### 2. Top Ten Race Starters:
+```{r, echo=FALSE}
+
+df_race_starters <- drivers %>%
+  group_by(Driver) %>%
+  summarise(Race_Starts = sum(Race_Starts)) %>%
+  arrange(desc(Race_Starts))
+
+# Take the top 10 rows after sorting
+df_top_10 <- head(df_race_starters, 10)
+
+# Create a bar plot using ggplot2
+ggplot(df_top_10, aes(x = reorder(Driver, -Race_Starts), y = Race_Starts, fill = Driver)) +
+  geom_bar(stat = "identity", color = "black") +
+  geom_text(aes(label = Race_Starts), vjust = -0.5, size = 3, color = "black") +
+  labs(title = "Top 10 Drivers by Race Starts", x = "Driver", y = "Race Starts") +
+  theme_classic() + 
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  coord_cartesian(ylim = c(0, 400))
+  # theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + 
+  # coord_flip()
+
+```
+From the bar plot above, the top ten race starters are (in order): Fernando Alonso(356), Kimi Räikkönen(349), Rubens Barrichello(322), Lewis Hamilton(311), Jenson Button(306), Michael Schumacher(306), Sebastian Vettel(299), Felipe Massa(269), Riccardo Patrese(256), Jarno Truill(252). 
+
+### 3. Top 10 Drivers by Pole Positions
+```{r, echo=FALSE, message=FALSE}
+
+
+# Group by 'Driver', calculate the sum of 'Pole_Positions', and arrange in descending order
+df_race_starters <- drivers %>%
+  group_by(Driver) %>%
+  summarise(Pole_Positions = sum(Pole_Positions)) %>%
+  arrange(desc(Pole_Positions))
+
+# Take the top 10 rows after sorting
+df_top_10 <- head(df_race_starters, 10)
+
+# Create a bar plot using ggplot2
+ggplot(df_top_10, aes(x = reorder(Driver, -Pole_Positions), y = Pole_Positions, fill = Driver)) +
+  geom_bar(stat = "identity", color = "black") +
+  geom_text(aes(label = Pole_Positions), vjust = -0.5, size = 3, color = "black") +
+  labs(title = "Top 10 Drivers by Pole Positions", x = "Driver", y = "Pole Positions") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
+  coord_cartesian(ylim = c(0, 120))
+  # scale_fill_manual(values = rep("red", nrow(df_top_10))) + 
+
+
+
+```
+From the bar plot above, the top ten drivers by pole positions are (in order): Lewis Hamilton(103), Michael Schumacher(68), Ayrton Senna(65), Sebastian Vettel(57), Alain Prost(33), Jim Clark(33), Nigel Mansell(32), Nico Rosberg(30), Juan Manuel Fangio(29), Mika Häkkinen(26).
+
+
+### 4. Top 10 Drivers with Most Wins: 
+```{r, echo=FALSE}
+
+# Group by 'Driver', calculate the sum of 'Race_Wins', and arrange in descending order
+df_race_starters <- drivers %>%
+  group_by(Driver) %>%
+  summarise(Race_Wins = sum(Race_Wins)) %>%
+  arrange(desc(Race_Wins))
+
+# Take the top 10 rows after sorting
+df_top_10 <- head(df_race_starters, 10)
+
+# Create a bar plot using ggplot2
+ggplot(df_top_10, aes(x = reorder(Driver, -Race_Wins), y = Race_Wins, fill = Driver)) +
+  geom_bar(stat = "identity", color = "black") +
+  labs(title = "Top 10 Drivers by Race Wins", x = "Driver", y = "Race Wins") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) + 
+  coord_cartesian(ylim = c(0, 120))
+
+
+```
+
+
+### 5: Racers' Nationalities: 
+
+#### (1): Top 5 nationalities overall: (with counts)
+
+```{r, echo=FALSE}
+# display the top 5 nationalities with their counts
+
+# Generate a frequency table using table()
+nationality_table <- table(drivers$Nationality)
+
+# Sort the frequency table in descending order and select the top 10 counts
+top_5_nationalities <- sort(nationality_table, decreasing = TRUE)[1:5]
+top_5_nationalities
+
+# United Kingdom: 164
+# United States: 160
+# Italy: 99
+# France: 72
+# West Germany: 39
+
+
+top_nationalities_data <- data.frame(countries = c('UK', 'US', 'Italy', 'France', 'West Germany'), counts = c(164, 160, 99, 72, 39))
+
+# barplot(top_nationalities_data$counts, names.arg = top_nationalities_data$countries,
+#         main = "Top Nationalities", xlab = "Countries", ylab = "Counts", col = "aquamarine", ylim = c(0, 180))
+                                     
+# Reorder countries based on counts in descending order
+top_nationalities_data$countries <- reorder(top_nationalities_data$countries, -top_nationalities_data$counts)
+
+
+ggplot(top_nationalities_data, aes(x = countries, y = counts)) +
+  geom_bar(stat = "identity", fill = "cadetblue1", col='black') +
+  geom_text(aes(label = counts), vjust = -0.5, size = 3, color = "black") +  # Add counts on top of bars
+  labs(title = "Top Five Nationalities Overall", x = "Nationalities", y = "Counts") +
+  theme_classic() + coord_cartesian(ylim = c(0, 200))
+
+
+```
+As shown by the table and graph above, out of 868 Formula 1 drivers from 1950 to 2023, the top five most common nationalities are: United Kingdom(164), United States(160), Italy(99), France(72), West Germany(39). 
+
+#### (2): Nationalities of veteran drivers (at least 15 years active) 
+
+```{r, echo=FALSE}
+
+# create two new columns using mutate: five_years_active; top_5_nationality
+
+drivers_augmented<- drivers %>%
+  mutate(five_years_active = ifelse(Years_Active>=5, yes = TRUE, no = FALSE)) %>%
+  mutate(top_5_nationality = ifelse(Nationality == 'United Kingdom' | Nationality == 'United States' | Nationality == 'Italy' | Nationality == 'France' | Nationality == 'West Germany', yes = TRUE, no = FALSE))
+
+active_drivers <- drivers_augmented %>%
+  filter(five_years_active == TRUE) 
+
+nrow(active_drivers)
+
+active_table <- table(active_drivers$Nationality)
+sorted_active_table <- sort(active_table, decreasing = TRUE)
+head(sorted_active_table, 5)
+
+
+active_nationalities_data <- data.frame(countries = c('US', 'UK', 'Italy', 'France', 'Brazil'), counts = c(41, 38, 33, 24, 10))
+active_nationalities_data$countries <- reorder(active_nationalities_data$countries, -active_nationalities_data$counts)
+
+ggplot(active_nationalities_data, aes(x = countries, y = counts)) +
+  geom_bar(stat = "identity", fill = "orchid", col='black') +
+  geom_text(aes(label = counts), vjust = -0.5, size = 3, color = "black") +  # Add counts on top of bars
+  labs(title = "Top Five Nationalities of Drivers Who are at least 15 years active", x = "Nationalities", y = "Counts") +
+  theme_classic() + coord_cartesian(ylim = c(0, 50))
+
+
+```
+
+From the table and graph above, we learn that: out of 242 veteran drivers (at least 15 years active), the top five nationalities are: United States(41), United Kingdom(38), Italy(33),  France(24), and Brazil(10). We can see that the top five nationalities of active drivers are roughly the same as the top five overall nationalities (except that here number of US veteran drivers surpass that of UK's and the 5th most common nationality is Brazil instead of West Germany). 
+
+
+#### (3): Nationalities of Winners(whose Race_Wins value is at least 1)
+
+```{r, echo=FALSE}
+
+winners <- drivers %>%
+  filter(Race_Wins > 0)
+
+nrow(winners)
+
+# Create a table of Nationality counts for winners
+nationality_table <- table(winners$Nationality)
+
+# Sort the table in descending order based on counts
+sorted_winner_nationality_table <- sort(nationality_table, decreasing = TRUE)
+
+# Display the sorted table
+print(sorted_winner_nationality_table[1:5])
+
+winner_nationalities_data <- data.frame(countries = c('UK', 'Italy', 'US', 'France', 'Brazil'), counts = c(20, 15, 15, 14, 6))
+winner_nationalities_data$countries <- reorder(winner_nationalities_data$countries, -winner_nationalities_data$counts)
+
+ggplot(winner_nationalities_data, aes(x = countries, y = counts)) +
+  geom_bar(stat = "identity", fill = "aquamarine", col='black') +
+  geom_text(aes(label = counts), vjust = -0.5, size = 3, color = "black") +  # Add counts on top of bars
+  labs(title = "Top Five Nationalities of Race Winners", x = "Nationalities", y = "Counts") +
+  theme_classic() + coord_cartesian(ylim = c(0, 25))
+```
+
+From the table and graph above, the top five nationalities of 113 race winners are: UK(20), Italy(15), US(15), France(14), Brazil(6).
+
+
+### 6. Trends: Drivers by Nationality and Decade 
+
+```{r, echo=FALSE, message=FALSE}
+
+
+# Define top 6 nationalities and highlight color
+top_6_nationalities <- c('Italy', 'United Kingdom', 'Germany', 'Brazil', 'United States', 'France')
+gray_color <- 'gray'
+highlight_color <- 'red'
+
+# Filter dataframe based on top 6 nationalities
+tmp_df <- drivers %>%
+  filter(Nationality %in% top_6_nationalities) %>%
+  group_by(Decade, Nationality) %>%
+  summarise(count = n()) %>%
+  ungroup()
+
+# Create color mapping
+color_discrete_map <- setNames(rep(gray_color, length(top_6_nationalities)), top_6_nationalities)
+color_discrete_map['United States'] <- highlight_color
+
+# Create the plot using plotly
+p <- plot_ly(data = tmp_df, x = ~Decade, y = ~count, type = 'scatter', mode = 'lines', color = ~Nationality) %>%
+  layout(
+    title = '<b>Drivers by Nationality and Decade</b>',
+    yaxis = list(title = 'count'),
+    xaxis = list(type = 'category')
+  ) %>%
+  add_trace(line = list(color = color_discrete_map))
+
+# Display the plot
+p
+
+```
+
+From above plot we can see the trend of drivers from US, UK, France, Italy overall decreased over the decades; drivers from Germany and Brazil slightly increased.
+
+
+
